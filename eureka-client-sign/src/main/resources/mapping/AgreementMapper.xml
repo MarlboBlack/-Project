@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.niaoren.eurekaclientsign.mapper.AgreementMapper" >
+  <resultMap id="BaseResultMap" type="com.niaoren.eurekaclientsign.entity.Agreement" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="agreement_code" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cso_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="factory_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="cso_contact_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="fac_contact_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cso_phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="fac_phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="service_area" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="start_time" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="end_time" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cso_sign_time" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="fac_sign_time" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sign_status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="cso_seal_img" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="fac_seal_img" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cso_sign_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="fac_sign_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="service_item" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cso_right_duty" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="fac_right_duty" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="business_secret" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="breach_responsibility" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="force_majeure" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="other" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, agreement_code, name, cso_id, factory_id, cso_contact_name, fac_contact_name, 
+    cso_phone, fac_phone, service_area, start_time, end_time, cso_sign_time, fac_sign_time, 
+    sign_status, cso_seal_img, fac_seal_img, cso_sign_name, fac_sign_name, service_item, 
+    cso_right_duty, fac_right_duty, business_secret, breach_responsibility, force_majeure, 
+    other
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from client_agreement
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from client_agreement
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.niaoren.eurekaclientsign.entity.Agreement" >
+    insert into client_agreement (id, agreement_code, name, 
+      cso_id, factory_id, cso_contact_name, 
+      fac_contact_name, cso_phone, fac_phone, 
+      service_area, start_time, end_time, 
+      cso_sign_time, fac_sign_time, sign_status, 
+      cso_seal_img, fac_seal_img, cso_sign_name, 
+      fac_sign_name, service_item, cso_right_duty, 
+      fac_right_duty, business_secret, breach_responsibility, 
+      force_majeure, other)
+    values (#{id,jdbcType=INTEGER}, #{agreementCode,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{csoId,jdbcType=INTEGER}, #{factoryId,jdbcType=INTEGER}, #{csoContactName,jdbcType=VARCHAR}, 
+      #{facContactName,jdbcType=VARCHAR}, #{csoPhone,jdbcType=VARCHAR}, #{facPhone,jdbcType=VARCHAR}, 
+      #{serviceArea,jdbcType=VARCHAR}, #{startTime,jdbcType=VARCHAR}, #{endTime,jdbcType=VARCHAR}, 
+      #{csoSignTime,jdbcType=VARCHAR}, #{facSignTime,jdbcType=VARCHAR}, #{signStatus,jdbcType=INTEGER}, 
+      #{csoSealImg,jdbcType=VARCHAR}, #{facSealImg,jdbcType=VARCHAR}, #{csoSignName,jdbcType=VARCHAR}, 
+      #{facSignName,jdbcType=VARCHAR}, #{serviceItem,jdbcType=VARCHAR}, #{csoRightDuty,jdbcType=VARCHAR}, 
+      #{facRightDuty,jdbcType=VARCHAR}, #{businessSecret,jdbcType=VARCHAR}, #{breachResponsibility,jdbcType=VARCHAR}, 
+      #{forceMajeure,jdbcType=VARCHAR}, #{other,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.niaoren.eurekaclientsign.entity.Agreement" >
+    insert into client_agreement
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="agreementCode != null" >
+        agreement_code,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="csoId != null" >
+        cso_id,
+      </if>
+      <if test="factoryId != null" >
+        factory_id,
+      </if>
+      <if test="csoContactName != null" >
+        cso_contact_name,
+      </if>
+      <if test="facContactName != null" >
+        fac_contact_name,
+      </if>
+      <if test="csoPhone != null" >
+        cso_phone,
+      </if>
+      <if test="facPhone != null" >
+        fac_phone,
+      </if>
+      <if test="serviceArea != null" >
+        service_area,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="csoSignTime != null" >
+        cso_sign_time,
+      </if>
+      <if test="facSignTime != null" >
+        fac_sign_time,
+      </if>
+      <if test="signStatus != null" >
+        sign_status,
+      </if>
+      <if test="csoSealImg != null" >
+        cso_seal_img,
+      </if>
+      <if test="facSealImg != null" >
+        fac_seal_img,
+      </if>
+      <if test="csoSignName != null" >
+        cso_sign_name,
+      </if>
+      <if test="facSignName != null" >
+        fac_sign_name,
+      </if>
+      <if test="serviceItem != null" >
+        service_item,
+      </if>
+      <if test="csoRightDuty != null" >
+        cso_right_duty,
+      </if>
+      <if test="facRightDuty != null" >
+        fac_right_duty,
+      </if>
+      <if test="businessSecret != null" >
+        business_secret,
+      </if>
+      <if test="breachResponsibility != null" >
+        breach_responsibility,
+      </if>
+      <if test="forceMajeure != null" >
+        force_majeure,
+      </if>
+      <if test="other != null" >
+        other,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="agreementCode != null" >
+        #{agreementCode,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="csoId != null" >
+        #{csoId,jdbcType=INTEGER},
+      </if>
+      <if test="factoryId != null" >
+        #{factoryId,jdbcType=INTEGER},
+      </if>
+      <if test="csoContactName != null" >
+        #{csoContactName,jdbcType=VARCHAR},
+      </if>
+      <if test="facContactName != null" >
+        #{facContactName,jdbcType=VARCHAR},
+      </if>
+      <if test="csoPhone != null" >
+        #{csoPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="facPhone != null" >
+        #{facPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceArea != null" >
+        #{serviceArea,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="csoSignTime != null" >
+        #{csoSignTime,jdbcType=VARCHAR},
+      </if>
+      <if test="facSignTime != null" >
+        #{facSignTime,jdbcType=VARCHAR},
+      </if>
+      <if test="signStatus != null" >
+        #{signStatus,jdbcType=INTEGER},
+      </if>
+      <if test="csoSealImg != null" >
+        #{csoSealImg,jdbcType=VARCHAR},
+      </if>
+      <if test="facSealImg != null" >
+        #{facSealImg,jdbcType=VARCHAR},
+      </if>
+      <if test="csoSignName != null" >
+        #{csoSignName,jdbcType=VARCHAR},
+      </if>
+      <if test="facSignName != null" >
+        #{facSignName,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceItem != null" >
+        #{serviceItem,jdbcType=VARCHAR},
+      </if>
+      <if test="csoRightDuty != null" >
+        #{csoRightDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="facRightDuty != null" >
+        #{facRightDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="businessSecret != null" >
+        #{businessSecret,jdbcType=VARCHAR},
+      </if>
+      <if test="breachResponsibility != null" >
+        #{breachResponsibility,jdbcType=VARCHAR},
+      </if>
+      <if test="forceMajeure != null" >
+        #{forceMajeure,jdbcType=VARCHAR},
+      </if>
+      <if test="other != null" >
+        #{other,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.niaoren.eurekaclientsign.entity.Agreement" >
+    update client_agreement
+    <set >
+      <if test="agreementCode != null" >
+        agreement_code = #{agreementCode,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="csoId != null" >
+        cso_id = #{csoId,jdbcType=INTEGER},
+      </if>
+      <if test="factoryId != null" >
+        factory_id = #{factoryId,jdbcType=INTEGER},
+      </if>
+      <if test="csoContactName != null" >
+        cso_contact_name = #{csoContactName,jdbcType=VARCHAR},
+      </if>
+      <if test="facContactName != null" >
+        fac_contact_name = #{facContactName,jdbcType=VARCHAR},
+      </if>
+      <if test="csoPhone != null" >
+        cso_phone = #{csoPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="facPhone != null" >
+        fac_phone = #{facPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceArea != null" >
+        service_area = #{serviceArea,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="csoSignTime != null" >
+        cso_sign_time = #{csoSignTime,jdbcType=VARCHAR},
+      </if>
+      <if test="facSignTime != null" >
+        fac_sign_time = #{facSignTime,jdbcType=VARCHAR},
+      </if>
+      <if test="signStatus != null" >
+        sign_status = #{signStatus,jdbcType=INTEGER},
+      </if>
+      <if test="csoSealImg != null" >
+        cso_seal_img = #{csoSealImg,jdbcType=VARCHAR},
+      </if>
+      <if test="facSealImg != null" >
+        fac_seal_img = #{facSealImg,jdbcType=VARCHAR},
+      </if>
+      <if test="csoSignName != null" >
+        cso_sign_name = #{csoSignName,jdbcType=VARCHAR},
+      </if>
+      <if test="facSignName != null" >
+        fac_sign_name = #{facSignName,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceItem != null" >
+        service_item = #{serviceItem,jdbcType=VARCHAR},
+      </if>
+      <if test="csoRightDuty != null" >
+        cso_right_duty = #{csoRightDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="facRightDuty != null" >
+        fac_right_duty = #{facRightDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="businessSecret != null" >
+        business_secret = #{businessSecret,jdbcType=VARCHAR},
+      </if>
+      <if test="breachResponsibility != null" >
+        breach_responsibility = #{breachResponsibility,jdbcType=VARCHAR},
+      </if>
+      <if test="forceMajeure != null" >
+        force_majeure = #{forceMajeure,jdbcType=VARCHAR},
+      </if>
+      <if test="other != null" >
+        other = #{other,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.niaoren.eurekaclientsign.entity.Agreement" >
+    update client_agreement
+    set agreement_code = #{agreementCode,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      cso_id = #{csoId,jdbcType=INTEGER},
+      factory_id = #{factoryId,jdbcType=INTEGER},
+      cso_contact_name = #{csoContactName,jdbcType=VARCHAR},
+      fac_contact_name = #{facContactName,jdbcType=VARCHAR},
+      cso_phone = #{csoPhone,jdbcType=VARCHAR},
+      fac_phone = #{facPhone,jdbcType=VARCHAR},
+      service_area = #{serviceArea,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=VARCHAR},
+      end_time = #{endTime,jdbcType=VARCHAR},
+      cso_sign_time = #{csoSignTime,jdbcType=VARCHAR},
+      fac_sign_time = #{facSignTime,jdbcType=VARCHAR},
+      sign_status = #{signStatus,jdbcType=INTEGER},
+      cso_seal_img = #{csoSealImg,jdbcType=VARCHAR},
+      fac_seal_img = #{facSealImg,jdbcType=VARCHAR},
+      cso_sign_name = #{csoSignName,jdbcType=VARCHAR},
+      fac_sign_name = #{facSignName,jdbcType=VARCHAR},
+      service_item = #{serviceItem,jdbcType=VARCHAR},
+      cso_right_duty = #{csoRightDuty,jdbcType=VARCHAR},
+      fac_right_duty = #{facRightDuty,jdbcType=VARCHAR},
+      business_secret = #{businessSecret,jdbcType=VARCHAR},
+      breach_responsibility = #{breachResponsibility,jdbcType=VARCHAR},
+      force_majeure = #{forceMajeure,jdbcType=VARCHAR},
+      other = #{other,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <insert id="insertSelectiveReturnId" parameterType="com.niaoren.eurekaclientsign.entity.Agreement" useGeneratedKeys="true" keyProperty="id">
+    insert into client_agreement
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="agreementCode != null" >
+        agreement_code,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="csoId != null" >
+        cso_id,
+      </if>
+      <if test="factoryId != null" >
+        factory_id,
+      </if>
+      <if test="csoContactName != null" >
+        cso_contact_name,
+      </if>
+      <if test="facContactName != null" >
+        fac_contact_name,
+      </if>
+      <if test="csoPhone != null" >
+        cso_phone,
+      </if>
+      <if test="facPhone != null" >
+        fac_phone,
+      </if>
+      <if test="serviceArea != null" >
+        service_area,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="csoSignTime != null" >
+        cso_sign_time,
+      </if>
+      <if test="facSignTime != null" >
+        fac_sign_time,
+      </if>
+      <if test="signStatus != null" >
+        sign_status,
+      </if>
+      <if test="csoSealImg != null" >
+        cso_seal_img,
+      </if>
+      <if test="facSealImg != null" >
+        fac_seal_img,
+      </if>
+      <if test="csoSignName != null" >
+        cso_sign_name,
+      </if>
+      <if test="facSignName != null" >
+        fac_sign_name,
+      </if>
+      <if test="serviceItem != null" >
+        service_item,
+      </if>
+      <if test="csoRightDuty != null" >
+        cso_right_duty,
+      </if>
+      <if test="facRightDuty != null" >
+        fac_right_duty,
+      </if>
+      <if test="businessSecret != null" >
+        business_secret,
+      </if>
+      <if test="breachResponsibility != null" >
+        breach_responsibility,
+      </if>
+      <if test="forceMajeure != null" >
+        force_majeure,
+      </if>
+      <if test="other != null" >
+        other,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="agreementCode != null" >
+        #{agreementCode,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="csoId != null" >
+        #{csoId,jdbcType=INTEGER},
+      </if>
+      <if test="factoryId != null" >
+        #{factoryId,jdbcType=INTEGER},
+      </if>
+      <if test="csoContactName != null" >
+        #{csoContactName,jdbcType=VARCHAR},
+      </if>
+      <if test="facContactName != null" >
+        #{facContactName,jdbcType=VARCHAR},
+      </if>
+      <if test="csoPhone != null" >
+        #{csoPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="facPhone != null" >
+        #{facPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceArea != null" >
+        #{serviceArea,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="csoSignTime != null" >
+        #{csoSignTime,jdbcType=VARCHAR},
+      </if>
+      <if test="facSignTime != null" >
+        #{facSignTime,jdbcType=VARCHAR},
+      </if>
+      <if test="signStatus != null" >
+        #{signStatus,jdbcType=INTEGER},
+      </if>
+      <if test="csoSealImg != null" >
+        #{csoSealImg,jdbcType=VARCHAR},
+      </if>
+      <if test="facSealImg != null" >
+        #{facSealImg,jdbcType=VARCHAR},
+      </if>
+      <if test="csoSignName != null" >
+        #{csoSignName,jdbcType=VARCHAR},
+      </if>
+      <if test="facSignName != null" >
+        #{facSignName,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceItem != null" >
+        #{serviceItem,jdbcType=VARCHAR},
+      </if>
+      <if test="csoRightDuty != null" >
+        #{csoRightDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="facRightDuty != null" >
+        #{facRightDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="businessSecret != null" >
+        #{businessSecret,jdbcType=VARCHAR},
+      </if>
+      <if test="breachResponsibility != null" >
+        #{breachResponsibility,jdbcType=VARCHAR},
+      </if>
+      <if test="forceMajeure != null" >
+        #{forceMajeure,jdbcType=VARCHAR},
+      </if>
+      <if test="other != null" >
+        #{other,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="selectByCsoId" parameterType="Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from client_agreement
+    where cso_id = #{csoId}
+  </select>
+  <select id="selectByFacId" parameterType="Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from client_agreement
+    where factory_id = #{facId}
+  </select>
+  <select id="selectByAgreementCode" resultMap="BaseResultMap" parameterType="String">
+    select
+    <include refid="Base_Column_List" />
+    from client_agreement
+    where agreement_code = #{agreementCode}
+  </select>
+  <update id="updateByAgreementCodeSelective" parameterType="com.niaoren.eurekaclientsign.entity.Agreement">
+    update client_agreement
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="csoId != null" >
+        cso_id = #{csoId,jdbcType=INTEGER},
+      </if>
+      <if test="factoryId != null" >
+        factory_id = #{factoryId,jdbcType=INTEGER},
+      </if>
+      <if test="csoContactName != null" >
+        cso_contact_name = #{csoContactName,jdbcType=VARCHAR},
+      </if>
+      <if test="facContactName != null" >
+        fac_contact_name = #{facContactName,jdbcType=VARCHAR},
+      </if>
+      <if test="csoPhone != null" >
+        cso_phone = #{csoPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="facPhone != null" >
+        fac_phone = #{facPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceArea != null" >
+        service_area = #{serviceArea,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="csoSignTime != null" >
+        cso_sign_time = #{csoSignTime,jdbcType=VARCHAR},
+      </if>
+      <if test="facSignTime != null" >
+        fac_sign_time = #{facSignTime,jdbcType=VARCHAR},
+      </if>
+      <if test="signStatus != null" >
+        sign_status = #{signStatus,jdbcType=INTEGER},
+      </if>
+      <if test="csoSealImg != null" >
+        cso_seal_img = #{csoSealImg,jdbcType=VARCHAR},
+      </if>
+      <if test="facSealImg != null" >
+        fac_seal_img = #{facSealImg,jdbcType=VARCHAR},
+      </if>
+      <if test="csoSignName != null" >
+        cso_sign_name = #{csoSignName,jdbcType=VARCHAR},
+      </if>
+      <if test="facSignName != null" >
+        fac_sign_name = #{facSignName,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceItem != null" >
+        service_item = #{serviceItem,jdbcType=VARCHAR},
+      </if>
+      <if test="csoRightDuty != null" >
+        cso_right_duty = #{csoRightDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="facRightDuty != null" >
+        fac_right_duty = #{facRightDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="businessSecret != null" >
+        business_secret = #{businessSecret,jdbcType=VARCHAR},
+      </if>
+      <if test="breachResponsibility != null" >
+        breach_responsibility = #{breachResponsibility,jdbcType=VARCHAR},
+      </if>
+      <if test="forceMajeure != null" >
+        force_majeure = #{forceMajeure,jdbcType=VARCHAR},
+      </if>
+      <if test="other != null" >
+        other = #{other,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where agreement_code = #{agreementCode,jdbcType=INTEGER}
+  </update>
+</mapper>

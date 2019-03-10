@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.niaoren.eurekaclientsign.mapper.ProtocolservicePriceMapper" >
+  <resultMap id="BaseResultMap" type="com.niaoren.eurekaclientsign.entity.ProtocolservicePrice" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="online_video_conference" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="video_promotion" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="daily_visit" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="question_survey" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="archives" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="advisory_report" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="offline_departments" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="agreement_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, online_video_conference, video_promotion, daily_visit, question_survey, archives, 
+    advisory_report, offline_departments, agreement_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from client_protocolservice_price
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from client_protocolservice_price
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.niaoren.eurekaclientsign.entity.ProtocolservicePrice" >
+    insert into client_protocolservice_price (id, online_video_conference, video_promotion, 
+      daily_visit, question_survey, archives, 
+      advisory_report, offline_departments, agreement_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{onlineVideoConference,jdbcType=INTEGER}, #{videoPromotion,jdbcType=INTEGER}, 
+      #{dailyVisit,jdbcType=INTEGER}, #{questionSurvey,jdbcType=INTEGER}, #{archives,jdbcType=INTEGER}, 
+      #{advisoryReport,jdbcType=INTEGER}, #{offlineDepartments,jdbcType=INTEGER}, #{agreementId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.niaoren.eurekaclientsign.entity.ProtocolservicePrice" >
+    insert into client_protocolservice_price
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="onlineVideoConference != null" >
+        online_video_conference,
+      </if>
+      <if test="videoPromotion != null" >
+        video_promotion,
+      </if>
+      <if test="dailyVisit != null" >
+        daily_visit,
+      </if>
+      <if test="questionSurvey != null" >
+        question_survey,
+      </if>
+      <if test="archives != null" >
+        archives,
+      </if>
+      <if test="advisoryReport != null" >
+        advisory_report,
+      </if>
+      <if test="offlineDepartments != null" >
+        offline_departments,
+      </if>
+      <if test="agreementId != null" >
+        agreement_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="onlineVideoConference != null" >
+        #{onlineVideoConference,jdbcType=INTEGER},
+      </if>
+      <if test="videoPromotion != null" >
+        #{videoPromotion,jdbcType=INTEGER},
+      </if>
+      <if test="dailyVisit != null" >
+        #{dailyVisit,jdbcType=INTEGER},
+      </if>
+      <if test="questionSurvey != null" >
+        #{questionSurvey,jdbcType=INTEGER},
+      </if>
+      <if test="archives != null" >
+        #{archives,jdbcType=INTEGER},
+      </if>
+      <if test="advisoryReport != null" >
+        #{advisoryReport,jdbcType=INTEGER},
+      </if>
+      <if test="offlineDepartments != null" >
+        #{offlineDepartments,jdbcType=INTEGER},
+      </if>
+      <if test="agreementId != null" >
+        #{agreementId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.niaoren.eurekaclientsign.entity.ProtocolservicePrice" >
+    update client_protocolservice_price
+    <set >
+      <if test="onlineVideoConference != null" >
+        online_video_conference = #{onlineVideoConference,jdbcType=INTEGER},
+      </if>
+      <if test="videoPromotion != null" >
+        video_promotion = #{videoPromotion,jdbcType=INTEGER},
+      </if>
+      <if test="dailyVisit != null" >
+        daily_visit = #{dailyVisit,jdbcType=INTEGER},
+      </if>
+      <if test="questionSurvey != null" >
+        question_survey = #{questionSurvey,jdbcType=INTEGER},
+      </if>
+      <if test="archives != null" >
+        archives = #{archives,jdbcType=INTEGER},
+      </if>
+      <if test="advisoryReport != null" >
+        advisory_report = #{advisoryReport,jdbcType=INTEGER},
+      </if>
+      <if test="offlineDepartments != null" >
+        offline_departments = #{offlineDepartments,jdbcType=INTEGER},
+      </if>
+      <if test="agreementId != null" >
+        agreement_id = #{agreementId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.niaoren.eurekaclientsign.entity.ProtocolservicePrice" >
+    update client_protocolservice_price
+    set online_video_conference = #{onlineVideoConference,jdbcType=INTEGER},
+      video_promotion = #{videoPromotion,jdbcType=INTEGER},
+      daily_visit = #{dailyVisit,jdbcType=INTEGER},
+      question_survey = #{questionSurvey,jdbcType=INTEGER},
+      archives = #{archives,jdbcType=INTEGER},
+      advisory_report = #{advisoryReport,jdbcType=INTEGER},
+      offline_departments = #{offlineDepartments,jdbcType=INTEGER},
+      agreement_id = #{agreementId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByAgreementId" parameterType="Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from client_protocolservice_price
+    where agreement_id = #{agreementId}
+  </select>
+</mapper>

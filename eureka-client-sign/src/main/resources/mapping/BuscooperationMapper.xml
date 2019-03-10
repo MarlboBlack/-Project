@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.niaoren.eurekaclientsign.mapper.BuscooperationMapper" >
+  <resultMap id="BaseResultMap" type="com.niaoren.eurekaclientsign.entity.Buscooperation" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="cso_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="factory_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="factory_child_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cso_id, factory_id, status, factory_child_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from client_buscooperation
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from client_buscooperation
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.niaoren.eurekaclientsign.entity.Buscooperation" >
+    insert into client_buscooperation (id, cso_id, factory_id, 
+      status, factory_child_id)
+    values (#{id,jdbcType=INTEGER}, #{csoId,jdbcType=INTEGER}, #{factoryId,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{factoryChildId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.niaoren.eurekaclientsign.entity.Buscooperation" >
+    insert into client_buscooperation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="csoId != null" >
+        cso_id,
+      </if>
+      <if test="factoryId != null" >
+        factory_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="factoryChildId != null" >
+        factory_child_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="csoId != null" >
+        #{csoId,jdbcType=INTEGER},
+      </if>
+      <if test="factoryId != null" >
+        #{factoryId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="factoryChildId != null" >
+        #{factoryChildId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.niaoren.eurekaclientsign.entity.Buscooperation" >
+    update client_buscooperation
+    <set >
+      <if test="csoId != null" >
+        cso_id = #{csoId,jdbcType=INTEGER},
+      </if>
+      <if test="factoryId != null" >
+        factory_id = #{factoryId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="factoryChildId != null" >
+        factory_child_id = #{factoryChildId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.niaoren.eurekaclientsign.entity.Buscooperation" >
+    update client_buscooperation
+    set cso_id = #{csoId,jdbcType=INTEGER},
+      factory_id = #{factoryId,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      factory_child_id = #{factoryChildId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectBycsoIdAndfacId" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List" />
+    from client_buscooperation
+    where cso_id = #{csoId}
+    and factory_id =#{facId}
+  </select>
+  <update id="updateSelectiveBycsoIdfacId" parameterType="com.niaoren.eurekaclientsign.entity.Buscooperation">
+    update client_buscooperation
+    <set >
+      <if test="csoId != null" >
+        cso_id = #{csoId,jdbcType=INTEGER},
+      </if>
+      <if test="factoryId != null" >
+        factory_id = #{factoryId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="factoryChildId != null" >
+        factory_child_id = #{factoryChildId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where cso_id = #{csoId}
+    and factory_id =#{factoryId}
+  </update>
+  <select id="selectfacIdList" resultType="int" parameterType="Integer">
+    select factory_id
+    from client_buscooperation
+    where cso_id = #{csoId}
+    and status = 3
+  </select>
+  <select id="selectcsoIdList" resultType="int" parameterType="Integer">
+    select cso_id
+    from client_buscooperation
+    where factory_id = #{facId}
+    and status = 3
+  </select>
+  <select id="selectCsoIdListByFacChildId" resultType="int" parameterType="Integer">
+    select cso_id
+    from client_buscooperation
+    where factory_child_id = #{factoryChildId}
+  </select>
+  <select id="selectByCsoIdFactoryChildId" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List" />
+    from client_buscooperation
+    where cso_id = #{csoId}
+    and factory_child_id =#{factoryChildId}
+  </select>
+</mapper>
