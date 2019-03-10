@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.niaoren.eurekaclientuser.mapper.StaffMapper" >
+  <resultMap id="BaseResultMap" type="com.niaoren.eurekaclientuser.entity.Staff" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="user_code" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="user_type" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="username" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="password" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="nickname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="headimg" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="agent_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="contact_address" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="qq" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="wechat" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="company_code" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="company_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="department" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="job" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="area" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hospital_dept" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hospital_position" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hospital_title" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="phone_number" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="id_card_number" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="work_company" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="last_login" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="work_aptitude" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_code, user_type, username, password, nickname, headimg, name, agent_name, 
+    contact_address, qq, wechat, company_code, company_name, department, job, area, hospital_dept, 
+    hospital_position, hospital_title, phone_number, id_card_number, work_company, time, 
+    last_login, work_aptitude
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_staff
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_staff
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.niaoren.eurekaclientuser.entity.Staff" >
+    insert into user_staff (id, user_code, user_type, 
+      username, password, nickname, 
+      headimg, name, agent_name, 
+      contact_address, qq, wechat, 
+      company_code, company_name, department, 
+      job, area, hospital_dept, 
+      hospital_position, hospital_title, phone_number, 
+      id_card_number, work_company, time, 
+      last_login, work_aptitude)
+    values (#{id,jdbcType=INTEGER}, #{userCode,jdbcType=VARCHAR}, #{userType,jdbcType=INTEGER}, 
+      #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{headimg,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{agentName,jdbcType=VARCHAR}, 
+      #{contactAddress,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, 
+      #{companyCode,jdbcType=VARCHAR}, #{companyName,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, 
+      #{job,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{hospitalDept,jdbcType=VARCHAR}, 
+      #{hospitalPosition,jdbcType=VARCHAR}, #{hospitalTitle,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, 
+      #{idCardNumber,jdbcType=VARCHAR}, #{workCompany,jdbcType=VARCHAR}, now(),
+      #{lastLogin,jdbcType=VARCHAR}, #{workAptitude,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.niaoren.eurekaclientuser.entity.Staff" >
+    insert into user_staff
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userCode != null" >
+        user_code,
+      </if>
+      <if test="userType != null" >
+        user_type,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="headimg != null" >
+        headimg,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="agentName != null" >
+        agent_name,
+      </if>
+      <if test="contactAddress != null" >
+        contact_address,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="wechat != null" >
+        wechat,
+      </if>
+      <if test="companyCode != null" >
+        company_code,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="department != null" >
+        department,
+      </if>
+      <if test="job != null" >
+        job,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="hospitalDept != null" >
+        hospital_dept,
+      </if>
+      <if test="hospitalPosition != null" >
+        hospital_position,
+      </if>
+      <if test="hospitalTitle != null" >
+        hospital_title,
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number,
+      </if>
+      <if test="idCardNumber != null" >
+        id_card_number,
+      </if>
+      <if test="workCompany != null" >
+        work_company,
+      </if>
+      <if test="time == null" >
+        time,
+      </if>
+      <if test="lastLogin != null" >
+        last_login,
+      </if>
+      <if test="workAptitude != null" >
+        work_aptitude,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userCode != null" >
+        #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="headimg != null" >
+        #{headimg,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="agentName != null" >
+        #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactAddress != null" >
+        #{contactAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null" >
+        #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCode != null" >
+        #{companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null" >
+        #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalDept != null" >
+        #{hospitalDept,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalPosition != null" >
+        #{hospitalPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalTitle != null" >
+        #{hospitalTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNumber != null" >
+        #{idCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="workCompany != null" >
+        #{workCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="time == null" >
+        now(),
+      </if>
+      <if test="lastLogin != null" >
+        #{lastLogin,jdbcType=VARCHAR},
+      </if>
+      <if test="workAptitude != null" >
+        #{workAptitude,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.niaoren.eurekaclientuser.entity.Staff" >
+    update user_staff
+    <set >
+      <if test="userCode != null" >
+        user_code = #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        user_type = #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="headimg != null" >
+        headimg = #{headimg,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="agentName != null" >
+        agent_name = #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactAddress != null" >
+        contact_address = #{contactAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null" >
+        wechat = #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCode != null" >
+        company_code = #{companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null" >
+        job = #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalDept != null" >
+        hospital_dept = #{hospitalDept,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalPosition != null" >
+        hospital_position = #{hospitalPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalTitle != null" >
+        hospital_title = #{hospitalTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNumber != null" >
+        id_card_number = #{idCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="workCompany != null" >
+        work_company = #{workCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLogin != null" >
+        last_login = #{lastLogin,jdbcType=VARCHAR},
+      </if>
+      <if test="workAptitude != null" >
+        work_aptitude = #{workAptitude,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.niaoren.eurekaclientuser.entity.Staff" >
+    update user_staff
+    set user_code = #{userCode,jdbcType=VARCHAR},
+      user_type = #{userType,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      headimg = #{headimg,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      agent_name = #{agentName,jdbcType=VARCHAR},
+      contact_address = #{contactAddress,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      wechat = #{wechat,jdbcType=VARCHAR},
+      company_code = #{companyCode,jdbcType=VARCHAR},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      department = #{department,jdbcType=VARCHAR},
+      job = #{job,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      hospital_dept = #{hospitalDept,jdbcType=VARCHAR},
+      hospital_position = #{hospitalPosition,jdbcType=VARCHAR},
+      hospital_title = #{hospitalTitle,jdbcType=VARCHAR},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      id_card_number = #{idCardNumber,jdbcType=VARCHAR},
+      work_company = #{workCompany,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      last_login = #{lastLogin,jdbcType=VARCHAR},
+      work_aptitude = #{workAptitude,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="checkUsername" resultType="int" parameterType="String">
+    select count(1) from user_staff
+    where username = #{username}
+  </select>
+  <select id="selectLogin" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List"/>
+    from user_staff
+    where username = #{username}
+    and password = #{password}
+  </select>
+  <select id="checkPassword" resultType="int" parameterType="map">
+    select count(1) from user_staff
+    where id = #{id}
+    and password = #{password}
+  </select>
+  <select id="selectByUsername" resultMap="BaseResultMap" parameterType="String">
+    select
+    <include refid="Base_Column_List" />
+    from user_staff
+    where username = #{username}
+  </select>
+  <select id="selectByCompanyName" resultMap="BaseResultMap" parameterType="String">
+    select
+    <include refid="Base_Column_List" />
+    from user_staff
+    where company_name = #{companyName}
+    and user_type in(2,3,5,7)
+  </select>
+  <delete id="deleteByUsername" parameterType="String" >
+    delete from user_staff
+    where username = #{username}
+  </delete>
+  <update id="resetPassword" parameterType="map">
+    update user_staff
+    set password = #{rsetPassword}
+    where username = #{username}
+  </update>
+  <update id="updateByUsernameSelective" parameterType="map">
+    update user_staff
+    <set >
+      <if test="staff.userType != null" >
+        user_type = #{staff.userType,jdbcType=INTEGER},
+      </if>
+      <if test="staff.username != null" >
+        username = #{staff.username,jdbcType=VARCHAR},
+      </if>
+      <if test="staff.password != null" >
+        password = #{staff.password,jdbcType=VARCHAR},
+      </if>
+      <if test="staff.nickname != null" >
+        nickname = #{staff.nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="staff.headimg != null" >
+        headimg = #{staff.headimg,jdbcType=VARCHAR},
+      </if>
+      <if test="staff.name != null" >
+        name = #{staff.name,jdbcType=VARCHAR},
+      </if>
+      <if test="staff.agentName != null" >
+        agent_name = #{staff.agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="staff.contactAddress != null" >
+        contact_address = #{staff.contactAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="staff.qq != null" >
+        qq = #{staff.qq,jdbcType=VARCHAR},
+      </if>
+      <if test="staff.wechat != null" >
+        wechat = #{staff.wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="staff.companyCode != null" >
+        company_code = #{staff.companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="staff.companyName != null" >
+        company_name = #{staff.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="staff.department != null" >
+        department = #{staff.department,jdbcType=VARCHAR},
+      </if>
+      <if test="staff.job != null" >
+        job = #{staff.job,jdbcType=VARCHAR},
+      </if>
+      <if test="staff.area != null" >
+        area = #{staff.area,jdbcType=VARCHAR},
+      </if>
+      <if test="staff.hospitalDept != null" >
+        hospital_dept = #{staff.hospitalDept,jdbcType=VARCHAR},
+      </if>
+      <if test="staff.hospitalPosition != null" >
+        hospital_position = #{staff.hospitalPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="staff.hospitalTitle != null" >
+        hospital_title = #{staff.hospitalTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="staff.phoneNumber != null" >
+        phone_number = #{staff.phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="staff.idCardNumber != null" >
+        id_card_number = #{staff.idCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="staff.workCompany != null" >
+        work_company = #{staff.workCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="staff.time != null" >
+        time = #{staff.time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="staff.lastLogin != null" >
+        last_login = #{staff.lastLogin,jdbcType=VARCHAR},
+      </if>
+      <if test="staff.workAptitude != null" >
+        work_aptitude = #{staff.workAptitude,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where username = #{phoneNumberOld}
+  </update>
+  <select id="getUsernameByCompNameRealName" resultType="String" parameterType="map">
+    select username
+    from user_staff
+    where company_name = #{companyName}
+    and name = #{realName}
+  </select>
+  <select id="getIdByNameCompanyName" resultType="int" parameterType="map">
+    select id
+    from user_staff
+    where company_name = #{companyName}
+    and name = #{realName}
+  </select>
+  <select id="selectByUserType" resultMap="BaseResultMap" parameterType="Integer">
+    select
+    <include refid="Base_Column_List" />
+    from user_staff
+    where user_type = #{userType}
+  </select>
+</mapper>

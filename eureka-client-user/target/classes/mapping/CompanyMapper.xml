@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.niaoren.eurekaclientuser.mapper.CompanyMapper" >
+  <resultMap id="BaseResultMap" type="com.niaoren.eurekaclientuser.entity.Company" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="code" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="type" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="synopsis" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="email" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="work_address" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="website" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="record_code" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="unify_credit_code" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="contact_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="contact_id_number" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="contact_phone_number" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="bank" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="bank_number" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="gmp_number" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="credit_rating" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="run_state" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="valid_state" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, code, type, name, synopsis, email, work_address, website, record_code, unify_credit_code, 
+    contact_name, contact_id_number, contact_phone_number, bank, bank_number, gmp_number, 
+    credit_rating, run_state, valid_state, time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_company
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_company
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.niaoren.eurekaclientuser.entity.Company" >
+    insert into user_company (id, code, type, 
+      name, synopsis, email, 
+      work_address, website, record_code, 
+      unify_credit_code, contact_name, contact_id_number, 
+      contact_phone_number, bank, bank_number, 
+      gmp_number, credit_rating, run_state, 
+      valid_state, time)
+    values (#{id,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR}, #{synopsis,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{workAddress,jdbcType=VARCHAR}, #{website,jdbcType=VARCHAR}, #{recordCode,jdbcType=VARCHAR}, 
+      #{unifyCreditCode,jdbcType=VARCHAR}, #{contactName,jdbcType=VARCHAR}, #{contactIdNumber,jdbcType=VARCHAR}, 
+      #{contactPhoneNumber,jdbcType=VARCHAR}, #{bank,jdbcType=VARCHAR}, #{bankNumber,jdbcType=VARCHAR}, 
+      #{gmpNumber,jdbcType=VARCHAR}, #{creditRating,jdbcType=VARCHAR}, #{runState,jdbcType=INTEGER}, 
+      #{validState,jdbcType=INTEGER}, now())
+  </insert>
+  <insert id="insertSelective" parameterType="com.niaoren.eurekaclientuser.entity.Company" >
+    insert into user_company
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="synopsis != null" >
+        synopsis,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="workAddress != null" >
+        work_address,
+      </if>
+      <if test="website != null" >
+        website,
+      </if>
+      <if test="recordCode != null" >
+        record_code,
+      </if>
+      <if test="unifyCreditCode != null" >
+        unify_credit_code,
+      </if>
+      <if test="contactName != null" >
+        contact_name,
+      </if>
+      <if test="contactIdNumber != null" >
+        contact_id_number,
+      </if>
+      <if test="contactPhoneNumber != null" >
+        contact_phone_number,
+      </if>
+      <if test="bank != null" >
+        bank,
+      </if>
+      <if test="bankNumber != null" >
+        bank_number,
+      </if>
+      <if test="gmpNumber != null" >
+        gmp_number,
+      </if>
+      <if test="creditRating != null" >
+        credit_rating,
+      </if>
+      <if test="runState != null" >
+        run_state,
+      </if>
+      <if test="validState != null" >
+        valid_state,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="synopsis != null" >
+        #{synopsis,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="workAddress != null" >
+        #{workAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null" >
+        #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="recordCode != null" >
+        #{recordCode,jdbcType=VARCHAR},
+      </if>
+      <if test="unifyCreditCode != null" >
+        #{unifyCreditCode,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactIdNumber != null" >
+        #{contactIdNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhoneNumber != null" >
+        #{contactPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="bankNumber != null" >
+        #{bankNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="gmpNumber != null" >
+        #{gmpNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="creditRating != null" >
+        #{creditRating,jdbcType=VARCHAR},
+      </if>
+      <if test="runState != null" >
+        #{runState,jdbcType=INTEGER},
+      </if>
+      <if test="validState != null" >
+        #{validState,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        now(),
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.niaoren.eurekaclientuser.entity.Company" >
+    update user_company
+    <set >
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="synopsis != null" >
+        synopsis = #{synopsis,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="workAddress != null" >
+        work_address = #{workAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null" >
+        website = #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="recordCode != null" >
+        record_code = #{recordCode,jdbcType=VARCHAR},
+      </if>
+      <if test="unifyCreditCode != null" >
+        unify_credit_code = #{unifyCreditCode,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactIdNumber != null" >
+        contact_id_number = #{contactIdNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhoneNumber != null" >
+        contact_phone_number = #{contactPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        bank = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="bankNumber != null" >
+        bank_number = #{bankNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="gmpNumber != null" >
+        gmp_number = #{gmpNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="creditRating != null" >
+        credit_rating = #{creditRating,jdbcType=VARCHAR},
+      </if>
+      <if test="runState != null" >
+        run_state = #{runState,jdbcType=INTEGER},
+      </if>
+      <if test="validState != null" >
+        valid_state = #{validState,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.niaoren.eurekaclientuser.entity.Company" >
+    update user_company
+    set code = #{code,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      synopsis = #{synopsis,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      work_address = #{workAddress,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR},
+      record_code = #{recordCode,jdbcType=VARCHAR},
+      unify_credit_code = #{unifyCreditCode,jdbcType=VARCHAR},
+      contact_name = #{contactName,jdbcType=VARCHAR},
+      contact_id_number = #{contactIdNumber,jdbcType=VARCHAR},
+      contact_phone_number = #{contactPhoneNumber,jdbcType=VARCHAR},
+      bank = #{bank,jdbcType=VARCHAR},
+      bank_number = #{bankNumber,jdbcType=VARCHAR},
+      gmp_number = #{gmpNumber,jdbcType=VARCHAR},
+      credit_rating = #{creditRating,jdbcType=VARCHAR},
+      run_state = #{runState,jdbcType=INTEGER},
+      valid_state = #{validState,jdbcType=INTEGER},
+      time = #{time,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="checkName" resultType="int" parameterType="String">
+    select count(1) from user_company
+    where name = #{name}
+  </select>
+  <select id="checkEmail" resultType="int" parameterType="String">
+    select count(1) from user_company
+    where email = #{email}
+  </select>
+  <select id="selectByCompanyName" resultMap="BaseResultMap" parameterType="String">
+    select
+    <include refid="Base_Column_List" />
+    from user_company
+    where name = #{name}
+  </select>
+  <delete id="deleteByCompanyName" parameterType="String">
+    delete from user_company
+    where name = #{name}
+  </delete>
+  <select id="selectByCompanyType" resultMap="BaseResultMap" parameterType="int">
+    select
+    <include refid="Base_Column_List" />
+    from user_company
+    where type = #{type}
+  </select>
+  <update id="updateByCompanyNameSelective" parameterType="com.niaoren.eurekaclientuser.entity.Company">
+    update user_company
+    <set >
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="synopsis != null" >
+        synopsis = #{synopsis,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="workAddress != null" >
+        work_address = #{workAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null" >
+        website = #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="recordCode != null" >
+        record_code = #{recordCode,jdbcType=VARCHAR},
+      </if>
+      <if test="unifyCreditCode != null" >
+        unify_credit_code = #{unifyCreditCode,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactIdNumber != null" >
+        contact_id_number = #{contactIdNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhoneNumber != null" >
+        contact_phone_number = #{contactPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        bank = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="bankNumber != null" >
+        bank_number = #{bankNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="gmpNumber != null" >
+        gmp_number = #{gmpNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="creditRating != null" >
+        credit_rating = #{creditRating,jdbcType=VARCHAR},
+      </if>
+      <if test="runState != null" >
+        run_state = #{runState,jdbcType=INTEGER},
+      </if>
+      <if test="validState != null" >
+        valid_state = #{validState,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where name = #{name}
+  </update>
+  <select id="selectIdByCompanyName" resultType="int" parameterType="String">
+    select id
+    from user_company
+    where name = #{name}
+  </select>
+  <select id="selectCompanyNameById" resultType="String" parameterType="Integer">
+    select name
+    from user_company
+    where id = #{companyId}
+  </select>
+</mapper>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.niaoren.eurekaclientuser.mapper.ValidstateMapper" >
+  <resultMap id="BaseResultMap" type="com.niaoren.eurekaclientuser.entity.Validstate" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="company_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sub_state" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="audit_state" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="pass_state" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="admin_user_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, company_name, sub_state, audit_state, pass_state, time, admin_user_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_validstate
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_validstate
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.niaoren.eurekaclientuser.entity.Validstate" >
+    insert into user_validstate (id, company_name, sub_state, 
+      audit_state, pass_state, time, 
+      admin_user_id)
+    values (#{id,jdbcType=INTEGER}, #{companyName,jdbcType=VARCHAR}, #{subState,jdbcType=INTEGER}, 
+      #{auditState,jdbcType=INTEGER}, #{passState,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP}, 
+      #{adminUserId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.niaoren.eurekaclientuser.entity.Validstate" >
+    insert into user_validstate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="subState != null" >
+        sub_state,
+      </if>
+      <if test="auditState != null" >
+        audit_state,
+      </if>
+      <if test="passState != null" >
+        pass_state,
+      </if>
+      <if test="time == null" >
+        time,
+      </if>
+      <if test="adminUserId != null" >
+        admin_user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="subState != null" >
+        #{subState,jdbcType=INTEGER},
+      </if>
+      <if test="auditState != null" >
+        #{auditState,jdbcType=INTEGER},
+      </if>
+      <if test="passState != null" >
+        #{passState,jdbcType=INTEGER},
+      </if>
+      <if test="time == null" >
+        now(),
+      </if>
+      <if test="adminUserId != null" >
+        #{adminUserId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.niaoren.eurekaclientuser.entity.Validstate" >
+    update user_validstate
+    <set >
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="subState != null" >
+        sub_state = #{subState,jdbcType=INTEGER},
+      </if>
+      <if test="auditState != null" >
+        audit_state = #{auditState,jdbcType=INTEGER},
+      </if>
+      <if test="passState != null" >
+        pass_state = #{passState,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adminUserId != null" >
+        admin_user_id = #{adminUserId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.niaoren.eurekaclientuser.entity.Validstate" >
+    update user_validstate
+    set company_name = #{companyName,jdbcType=VARCHAR},
+      sub_state = #{subState,jdbcType=INTEGER},
+      audit_state = #{auditState,jdbcType=INTEGER},
+      pass_state = #{passState,jdbcType=INTEGER},
+      time = #{time,jdbcType=TIMESTAMP},
+      admin_user_id = #{adminUserId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByCompanyName" parameterType="com.niaoren.eurekaclientuser.entity.Validstate">
+    update user_validstate
+    <set >
+      <if test="subState != null" >
+        sub_state = #{subState,jdbcType=INTEGER},
+      </if>
+      <if test="auditState != null" >
+        audit_state = #{auditState,jdbcType=INTEGER},
+      </if>
+      <if test="passState != null" >
+        pass_state = #{passState,jdbcType=INTEGER},
+      </if>
+      <if test="adminUserId != null" >
+        admin_user_id = #{adminUserId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where company_name = #{companyName}
+  </update>
+  <select id="selectByAdminUserId" resultMap="BaseResultMap" parameterType="Integer">
+    select
+    <include refid="Base_Column_List" />
+    from user_validstate
+    where admin_user_id = #{adminUserId,jdbcType=INTEGER}
+  </select>
+</mapper>
